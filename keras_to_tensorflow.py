@@ -55,12 +55,12 @@ flags.mark_flag_as_required('input_model')
 flags.mark_flag_as_required('output_model')
 
 
-def load_model(input_model_path, input_json_path=None, input_yaml_path=None):
+def load_model(input_model_path, custom_objects, input_json_path=None, input_yaml_path=None):
     if not Path(input_model_path).exists():
         raise FileNotFoundError(
             'Model file `{}` does not exist.'.format(input_model_path))
     try:
-        model = keras.models.load_model(input_model_path)
+        model = keras.models.load_model(input_model_path,custom_objects)
         return model
     except FileNotFoundError as err:
         logging.error('Input mode file (%s) does not exist.', FLAGS.input_model)
