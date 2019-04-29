@@ -125,7 +125,7 @@ def main(args):
     else:
         K.set_image_data_format('channels_last')
 
-    model = load_model(FLAGS.input_model, FLAGS.input_model_json, FLAGS.input_model_yaml)
+    model = load_model(FLAGS.input_model, custom_objects, FLAGS.input_model_json, FLAGS.input_model_yaml)
 
     # TODO(amirabdi): Support networks with multiple inputs
     orig_output_node_names = [node.op.name for node in model.outputs]
